@@ -4,13 +4,13 @@ import ArticleCategory from "../component/ArticleCategory";
 import convertSizeImageUrl from "../helper/convertSizeImageUrl";
 
 function Trending({ articles }) {
-    const firstArticle =  articles[0];
+    const firstArticle = articles[0];
     firstArticle.thumb_art = convertSizeImageUrl.toFull(firstArticle.thumb_art);
-    const mediumArticles =  articles.slice(1, 5).map(article => {
+    const mediumArticles = articles.slice(1, 5).map(article => {
         article.thumb_art = convertSizeImageUrl.toLarge(article.thumb_art);
         return article;
     })
-    const thumbnailArticles =  articles.slice(5).map(article => {
+    const thumbnailArticles = articles.slice(5).map(article => {
         article.thumb_art = convertSizeImageUrl.toThumbnail(article.thumb_art);
         return article;
     })
@@ -19,7 +19,7 @@ function Trending({ articles }) {
             <div className="container">
                 <div className="row">
                     <div className="col-md-7 first-article">
-                        <Article article={firstArticle}/>
+                        <Article article={firstArticle} />
                     </div>
                 </div>
                 <div className="row">
@@ -37,13 +37,21 @@ function Trending({ articles }) {
                                     }
                                 </div>
                                 <div className="row">
-                                    {
-                                        thumbnailArticles.map(article =>
-                                            <div className="col-md-4 col-sm-6" key={article._id}>
-                                                <ArticleCategory article={article} />
-                                            </div>
-                                        )
-                                    }
+                                    <div className="col-md-4 col-sm-6">
+                                        <ArticleCategory article={thumbnailArticles[0]}/>
+                                        <ArticleCategory article={thumbnailArticles[1]}/>
+                                        <ArticleCategory article={thumbnailArticles[2]}/>
+                                    </div>
+                                    <div className="col-md-4 col-sm-6">
+                                        <ArticleCategory article={thumbnailArticles[3]}/>
+                                        <ArticleCategory article={thumbnailArticles[4]}/>
+                                        <ArticleCategory article={thumbnailArticles[5]}/>
+                                    </div>
+                                    <div className="col-md-4 col-sm-6">
+                                        <ArticleCategory article={thumbnailArticles[6]}/>
+                                        <ArticleCategory article={thumbnailArticles[7]}/>
+                                        <ArticleCategory article={thumbnailArticles[8]}/>
+                                    </div>
                                 </div>
                             </div>
                         </div>

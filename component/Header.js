@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { withRouter } from 'next/router';
-
 import categories from "../constants/categories";
 
 function Header({router}) {

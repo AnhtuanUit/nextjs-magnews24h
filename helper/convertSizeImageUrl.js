@@ -7,7 +7,7 @@ const regex = new RegExp(`(${THUMBNAIL}|${MEDIUM_SIZE}|${LARGE_SIZE}|${FULL_SIZE
 const formatSrc = (src) => {
     let { origin, pathname } = new URL(src);
     if(!pathname.match(regex)) {
-        origin = origin.replace("://i1", "://i");
+        origin = origin.replace(/(:\/\/i1|:\/\/vcdn1)/, "://i");
         pathname = pathname.replace(".jpg", `_${THUMBNAIL}.jpg`);
         return `${origin}${pathname}`;
     }

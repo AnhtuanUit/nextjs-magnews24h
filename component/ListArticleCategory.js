@@ -24,8 +24,8 @@ function ListArticleCategory({ data }) {
       <div className="container">
         <div className="row">
           <div className="col-md-8">
-            {listRowCategory.map(rowCategory =>
-              <div className="row">
+            {listRowCategory.map((rowCategory, index) =>
+              <div className="row" key={`rowCategory-${index}`}>
                 {
                   rowCategory.map(category =>
                     <div className="col-md-6 col-sm-6" key={category.type}>

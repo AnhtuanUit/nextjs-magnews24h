@@ -1373,7 +1373,7 @@ textarea.input {
 }
 
 /* First article */
-.first-article .article .article-title {
+.first-article .article .article-title, .article-detail .article .article-title {
 	text-transform: uppercase;
 	font-size: 23px;
 }
@@ -1430,7 +1430,10 @@ textarea.input {
 	padding: 10px 10px;
 }
 
-
+/* Article body */
+/* .Normal, .article-detail p {
+	font-size: 19px;
+} */
 /* Footer */
 .footer-widget .footer-logo .logo > img {
 	width: 80%;
