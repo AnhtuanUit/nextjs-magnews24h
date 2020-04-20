@@ -14,8 +14,6 @@ function App({ Component, pageProps }) {
       <link type="text/css" rel="stylesheet" href="css/owl.theme.default.css" />
       <link rel="stylesheet" href="/css/font-awesome.min.css" />
       <link type="text/css" rel="stylesheet" href="css/style.css" />
-      {/* jQuery Plugins */}
-
     </Header>
     <HeaderComponent />
     <Component {...pageProps} />
