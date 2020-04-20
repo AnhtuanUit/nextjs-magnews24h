@@ -2,7 +2,6 @@ import Article from "./Article";
 import ArticleCategory from "./ArticleCategory";
 import convertSizeImageUrl from "../helper/convertSizeImageUrl";
 import categories from "../constants/categories.js";
-import classcapitalizeFirstLetter from '../helper/capitalizeFirstLetter';
 import { Component } from 'react';
 import fetch from 'isomorphic-unfetch';
 
