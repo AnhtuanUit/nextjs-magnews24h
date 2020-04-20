@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  node_12: 
+    build: .
+    image: miner-magnews/node:12
+  website:
+    image: miner-magnews/node:12
+    volumes:
+      # Mounts the project directory on the host to /app inside the container,
+      # allowing you to modify the code without having to rebuild the image.
+      - .:/app
+    depends_on:
+      - node_12
+    # Expose ports [HOST:CONTAINER}
+    ports:
+      - "80:3000"
+    restart: always
+    environment:
+        - NODE_ENV=production
+    command: npm run start
+networks:
+  default:
+    external:
+      name: miner_magnews
