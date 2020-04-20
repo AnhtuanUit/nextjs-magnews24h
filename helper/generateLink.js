@@ -1,4 +1,10 @@
 
+import categories from "../constants/categories";
+
+function detectCategoryPath(categoryName) {
+    return categories.find(x => x.categoryName === categoryName) && categories.find(x => x.categoryName === categoryName).type || "";
+}
+
 function removeAccents(str) {
     var AccentsMap = [
         "aàảãáạăằẳẵắặâầẩẫấậ",
@@ -23,11 +29,11 @@ function removeAccents(str) {
     return str;
 }
 
-function generateLink({ title, id }) {
+function generateLink({ title, id, categoryName }) {
     let formatTitle = removeAccents(title);
     formatTitle = formatTitle.toLowerCase();
     formatTitle = formatTitle.replace(/[^a-z0-9\s]/gi, '').replace(/[_\s]/g, '-');
-    return `${formatTitle}-${id}.html`;
+    return `${detectCategoryPath(categoryName)}/${formatTitle}-${id}.html`;
 }
 
 export default generateLink;

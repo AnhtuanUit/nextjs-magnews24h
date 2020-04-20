@@ -9,7 +9,6 @@ import ReactPaginate from 'react-paginate';
 class Category extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             data: [],
             offset: 0,
@@ -21,7 +20,8 @@ class Category extends Component {
         let offset = Math.ceil(selected * this.props.perPage);
 
         this.setState({ offset: offset }, () => {
-            return Router.push('/[category]', `${this.props.categoryPath}-p${selected + 1}`);
+            Router.push('/[category]', `${this.props.categoryPath}-p${selected + 1}`);
+            window.scroll({top: 0, left: 0, behavior: 'smooth' })
         });
     };
 
@@ -46,7 +46,7 @@ class Category extends Component {
                                 ortherArticles.length && ortherArticles.map(article =>
                                     <article className="article row-article" key={article._id}>
                                         <div className="article-img">
-                                            <Link  href="/[category]" as={generateLink({ title: article.title, id: article._id })}>
+                                            <Link href="/[category]/[article]" as={generateLink({ title: article.title, id: article._id, categoryName: article.categoryName })}>
                                                 <a>
                                                     <img src={convertSizeImageUrl.toMedium(article.thumb_art)} alt="" />
                                                 </a>
@@ -54,7 +54,7 @@ class Category extends Component {
 
                                         </div>
                                         <div className="article-body">
-                                            <h3 className="article-title"><Link  href="/[category]" as={generateLink({ title: article.title, id: article._id })}><a>{article.title}</a></Link></h3>
+                                            <h3 className="article-title"><Link href="/[category]/[article]" as={generateLink({ title: article.title, id: article._id, categoryName: article.categoryName })}><a>{article.title}</a></Link></h3>
                                             <ul className="article-meta">
                                                 <li><i className="fa fa-clock-o" /> {article.time}</li>
                                             </ul>

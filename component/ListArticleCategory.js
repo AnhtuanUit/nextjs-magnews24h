@@ -3,50 +3,69 @@ import ArticleCategory from "./ArticleCategory";
 import convertSizeImageUrl from "../helper/convertSizeImageUrl";
 import categories from "../constants/categories.js";
 import classcapitalizeFirstLetter from '../helper/capitalizeFirstLetter';
+import { Component } from 'react';
+import fetch from 'isomorphic-unfetch';
 
-function ListArticleCategory({ data }) {
-  let rowCategory = [];
-  const listRowCategory = [];
-  data.forEach((category, index) => {
-    if (category.type && category.data.length === 3) {
-      category.data[0].thumb_art = convertSizeImageUrl.toLarge(category.data[0].thumb_art);
-      category.data[1].thumb_art = convertSizeImageUrl.toThumbnail(category.data[1].thumb_art);
-      category.data[2].thumb_art = convertSizeImageUrl.toThumbnail(category.data[2].thumb_art);
-      rowCategory.push(category);
-    }
-    if (rowCategory.length === 2 || index === data.length - 1) {
-      listRowCategory.push(rowCategory);
-      rowCategory = [];
-    }
-  })
-  return (
-    <div className="section">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-8">
-            {listRowCategory.map((rowCategory, index) =>
-              <div className="row" key={`rowCategory-${index}`}>
-                {
-                  rowCategory.map(category => {
-                    let categoryName = categories.find(x => category.type === x.categoryName).name;
-                    return (<div className="col-md-6 col-sm-6" key={category.type}>
-                      <div className="section-title">
-                        <h2 className="title">{categoryName}</h2>
-                      </div>
-                      <Article article={category.data[0]} />
-                      <ArticleCategory article={category.data[1]} />
-                      <ArticleCategory article={category.data[2]} />
-                    </div>)
+class ListArticleCategory extends Component {
+  state = {
+    data: []
+  }
+
+  componentDidMount() {
+    fetch('http://45.76.179.13:4041/api/articles/post')
+      .then(resPost => resPost.json())
+      .then(jsonPost => {
+        const data = jsonPost.data;
+        this.setState({ data });
+      })
+  }
+
+  render() {
+    let rowCategory = [];
+    const listRowCategory = [];
+    const data = this.state.data;
+    data.forEach((category, index) => {
+      if (category.type && category.data.length === 3) {
+        category.data[0].thumb_art = convertSizeImageUrl.toLarge(category.data[0].thumb_art);
+        category.data[1].thumb_art = convertSizeImageUrl.toThumbnail(category.data[1].thumb_art);
+        category.data[2].thumb_art = convertSizeImageUrl.toThumbnail(category.data[2].thumb_art);
+        rowCategory.push(category);
+      }
+      if (rowCategory.length === 2 || index === data.length - 1) {
+        listRowCategory.push(rowCategory);
+        rowCategory = [];
+      }
+    });
+
+    return (
+      <div className="section">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-8">
+              {listRowCategory.length ? listRowCategory.map((rowCategory, index) =>
+                <div className="row" key={`rowCategory-${index}`}>
+                  {
+                    rowCategory.map(category => {
+                      let categoryName = categories.find(x => category.type === x.categoryName).name;
+                      return (<div className="col-md-6 col-sm-6" key={category.type}>
+                        <div className="section-title">
+                          <h2 className="title">{categoryName}</h2>
+                        </div>
+                        <Article article={category.data[0]} />
+                        <ArticleCategory article={category.data[1]} />
+                        <ArticleCategory article={category.data[2]} />
+                      </div>)
+                    }
+                    )
                   }
-                  )
-                }
-              </div>
-            )}
+                </div>
+              ) : <p>Loading ...</p>}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default ListArticleCategory;
