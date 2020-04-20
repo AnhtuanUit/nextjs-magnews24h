@@ -19,7 +19,7 @@ Index.getInitialProps = async ctx => {
     const { article } = query;
     if (article.includes(".html")) {
       const articleId = article.match(/\-([\da-z]*).html/)[1];
-      const resPost = await fetch(`http://45.76.179.13:4041/api/articles/Trangnhat/${articleId}`);
+      const resPost = await fetch(`http://magnews24h.com:4041/api/articles/Trangnhat/${articleId}`);
       const jsonPost = await resPost.json()
       const data = jsonPost.data;
       return { article: data };
