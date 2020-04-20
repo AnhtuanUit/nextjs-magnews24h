@@ -1434,7 +1434,14 @@ textarea.input {
 /* .Normal, .article-detail p {
 	font-size: 19px;
 } */
+img {
+	max-width: 100%;
+}
 /* Footer */
 .footer-widget .footer-logo .logo > img {
 	width: 80%;
+}
+
+#footer a {
+    color: lightseagreen;
 }

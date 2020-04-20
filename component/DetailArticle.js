@@ -1,7 +1,4 @@
-import { withRouter } from 'next/router';
-import fetch from "isomorphic-unfetch";
-
-function Article({ data = {} }) {
+function DetailArticle({ data = {} }) {
   const { article = "", title = "", description = "", time = "" } = data;
   return (
     <div className="section article-detail">
@@ -71,12 +68,4 @@ function Article({ data = {} }) {
   );
 }
 
-Article.getInitialProps = async ctx => {
-  console.log("ctx", ctx.router);
-  const res = await fetch('http://45.76.179.13:4041/api/articles/Trangnhat/797518ac86cb87ceec797c5087283d36')
-  const json = await res.json();
-  const data = json.data;
-  return { data }
-}
-
-export default withRouter(Article)
+export default DetailArticle;

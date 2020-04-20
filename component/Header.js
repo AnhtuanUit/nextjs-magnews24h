@@ -3,6 +3,9 @@ import { withRouter } from 'next/router';
 import categories from "../constants/categories";
 
 function Header({router}) {
+  const asPath = router.query.category;
+  const pageNumber = asPath && asPath.match(/([-a-z]*)-p(\d*)/) && asPath.match(/([-a-z]*)-p(\d*)/)[2];
+  const categoryPath = pageNumber ? asPath.match(/([-a-z]*)-p(\d*)/)[1] : asPath;
     return (
         <header id="header">
           <div id="center-header">
@@ -26,12 +29,12 @@ function Header({router}) {
                   </Link>
                 </div>
                 <ul className="main-nav nav navbar-nav">
-                  <li className={!router.query.category ? "active" : ""}><Link  href="/"><a>Trang nhất</a></Link></li>
-                  {categories.map(category => <li key={category.type} className={category.type.includes(router.query.category) ? "active" : ""}><Link  href="/[category]" as={category.type}><a>{category.name}</a></Link></li>)}
+                  <li className={categories.filter(category => category.type.includes(categoryPath)).length ? "" : "active"}><Link  href="/"><a>Trang nhất</a></Link></li>
+                  {categories.map(category => <li key={category.type} className={category.type.includes(categoryPath) ? "active" : ""}><Link  href="/[category]" as={category.type}><a>{category.name}</a></Link></li>)}
                 </ul>
               </nav>
               <div className="button-nav">
-                <button className="search-collapse-btn"><i className="fa fa-search" /></button>
+                {/* <button className="search-collapse-btn"><i className="fa fa-search" /></button> */}
                 <button className="nav-collapse-btn"><i className="fa fa-bars" /></button>
                 <div className="search-form">
                   <form>

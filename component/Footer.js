@@ -12,7 +12,7 @@ function Footer () {
                     <Link href="/">
                       <a className="logo"><img src="./img/logo-alt.png" alt="" /></a>
                     </Link>
-                    <p>MAGNEWS 24H, sản phẩm demo cho hệ thống thu thập dữ liệu thời gian thực từ https://vnexpress.net/</p>
+                    <p>MAGNEWS 24H, sản phẩm demo cho hệ thống tự động thu thập dữ liệu <a href="https://vnexpress.net">VnExpress</a></p>
                   </div>
                 </div>
                

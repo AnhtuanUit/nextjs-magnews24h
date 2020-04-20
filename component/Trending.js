@@ -18,15 +18,17 @@ function Trending({ articles }) {
         <div className="section">
             <div className="container">
                 <div className="row">
+                    <div className="col-md-12">
+                        <div className="section-title">
+                            <h2 className="title">Trang nhất</h2>
+                        </div>
+                    </div>
                     <div className="col-md-7 first-article">
                         <Article article={firstArticle} />
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-md-12">
-                        <div className="section-title">
-                            <h2 className="title">Trending Posts</h2>
-                        </div>
                         <div className="tab-content">
                             <div id="tab1" className="tab-pane fade in active">
                                 <div className="row">
@@ -38,19 +40,19 @@ function Trending({ articles }) {
                                 </div>
                                 <div className="row">
                                     <div className="col-md-4 col-sm-6">
-                                        <ArticleCategory article={thumbnailArticles[0]}/>
-                                        <ArticleCategory article={thumbnailArticles[1]}/>
-                                        <ArticleCategory article={thumbnailArticles[2]}/>
+                                        <ArticleCategory article={thumbnailArticles[0]} />
+                                        <ArticleCategory article={thumbnailArticles[1]} />
+                                        <ArticleCategory article={thumbnailArticles[2]} />
                                     </div>
                                     <div className="col-md-4 col-sm-6">
-                                        <ArticleCategory article={thumbnailArticles[3]}/>
-                                        <ArticleCategory article={thumbnailArticles[4]}/>
-                                        <ArticleCategory article={thumbnailArticles[5]}/>
+                                        <ArticleCategory article={thumbnailArticles[3]} />
+                                        <ArticleCategory article={thumbnailArticles[4]} />
+                                        <ArticleCategory article={thumbnailArticles[5]} />
                                     </div>
                                     <div className="col-md-4 col-sm-6">
-                                        <ArticleCategory article={thumbnailArticles[6]}/>
-                                        <ArticleCategory article={thumbnailArticles[7]}/>
-                                        <ArticleCategory article={thumbnailArticles[8]}/>
+                                        <ArticleCategory article={thumbnailArticles[6]} />
+                                        <ArticleCategory article={thumbnailArticles[7]} />
+                                        <ArticleCategory article={thumbnailArticles[8]} />
                                     </div>
                                 </div>
                             </div>
