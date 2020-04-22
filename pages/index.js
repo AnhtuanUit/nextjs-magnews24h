@@ -1,25 +1,14 @@
 import fetch from "isomorphic-unfetch";
 import Trending from "../component/Trending";
 import ListArticleCategory from "../component/ListArticleCategory";
-import Head from "next/head";
+import Layout from "../component/layout";
 
 function Index({ articles, data }) {
   return (
-    <div>
-      <Head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `  window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', 'UA-164230711-1');`
-          }}
-        />
-      </Head>
+    <Layout>
       <Trending articles={articles} />
       <ListArticleCategory />
-    </div>
+    </Layout>
   );
 }
 

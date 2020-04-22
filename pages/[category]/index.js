@@ -2,28 +2,16 @@ import { withRouter } from 'next/router';
 import fetch from "isomorphic-unfetch";
 import DetailArticle from '../../component/DetailArticle';
 import Category from '../../component/Category';
-import { Fragment } from 'react';
 import categories from '../../constants/categories.js';
 import classcapitalizeFirstLetter from '../../helper/capitalizeFirstLetter';
-import Head from 'next/head';
+import Layout from "../../component/layout";
 
 function Index({ router, article, articles, categoryName, categoryPath, pageNumber }) {
   return (
-    <Fragment>
-      <Head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `  window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', 'UA-164230711-1');`
-          }}
-        />
-      </Head>
+    <Layout>
       {article && <DetailArticle data={article} />}
       {categoryName && <Category articles={articles} categoryName={categoryName} categoryPath={categoryPath} pageNumber={pageNumber} />}
-    </Fragment>
+    </Layout>
   );
 }
 
