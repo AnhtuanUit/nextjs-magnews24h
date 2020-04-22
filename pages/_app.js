@@ -16,19 +16,6 @@ function App({ Component, pageProps }) {
       <link type="text/css" rel="stylesheet" href="css/style.css" />
 
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164230711-1"></script>
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `  window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', 'UA-164230711-1');`
-        }}
-      />
-      <script>
-
-      </script>
-
 
     </Header>
     <HeaderComponent />
