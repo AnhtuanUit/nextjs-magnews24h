@@ -14,12 +14,29 @@ function App({ Component, pageProps }) {
       <link type="text/css" rel="stylesheet" href="css/owl.theme.default.css" />
       <link rel="stylesheet" href="/css/font-awesome.min.css" />
       <link type="text/css" rel="stylesheet" href="css/style.css" />
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164230711-1"></script>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `  window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'UA-164230711-1');`
+        }}
+      />
+      <script>
+
+      </script>
+
+
     </Header>
     <HeaderComponent />
     <Component {...pageProps} />
     <FooterComponent />
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+
   </div>
 }
 
