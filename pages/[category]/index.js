@@ -5,12 +5,24 @@ import Category from '../../component/Category';
 import { Fragment } from 'react';
 import categories from '../../constants/categories.js';
 import classcapitalizeFirstLetter from '../../helper/capitalizeFirstLetter';
+import Head from 'next/head';
 
 function Index({ router, article, articles, categoryName, categoryPath, pageNumber }) {
   return (
     <Fragment>
-      {article && <DetailArticle data={article}/>}
-      {categoryName && <Category articles={articles} categoryName={categoryName} categoryPath={categoryPath} pageNumber={pageNumber}/>}
+      <Head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `  window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'UA-164230711-1');`
+          }}
+        />
+      </Head>
+      {article && <DetailArticle data={article} />}
+      {categoryName && <Category articles={articles} categoryName={categoryName} categoryPath={categoryPath} pageNumber={pageNumber} />}
     </Fragment>
   );
 }
@@ -28,7 +40,7 @@ Index.getInitialProps = async ctx => {
     const jsonPost = await resPost.json()
     const data = jsonPost.data;
     return { article: data };
-  } else if(existCategories.includes(categoryPath)) {
+  } else if (existCategories.includes(categoryPath)) {
     const categoryName = categories.find(category => category.type === categoryPath).name;
     const typeQuery = classcapitalizeFirstLetter(categoryPath.replace('/', '')).split('-').join("");
     const resPost = await fetch(`http://magnews24h.com:4041/api/articles/${typeQuery}?page=${pageNumber || 1}&limit=15`);
