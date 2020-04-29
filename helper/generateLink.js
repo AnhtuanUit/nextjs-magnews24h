@@ -2,7 +2,7 @@
 import categories from "../constants/categories";
 
 function detectCategoryPath(categoryName) {
-    return categories.find(x => x.categoryName === categoryName) && categories.find(x => x.categoryName === categoryName).type || "";
+    return categories.find(x => x.categoryName === categoryName) && categories.find(x => x.categoryName === categoryName).type || "/trang-nhat";
 }
 
 function removeAccents(str) {
