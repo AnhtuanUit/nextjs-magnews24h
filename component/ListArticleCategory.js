@@ -11,7 +11,7 @@ class ListArticleCategory extends Component {
   }
 
   componentDidMount() {
-    fetch('http://magnews24h.com:4041/api/articles/post')
+    fetch('https://45.76.179.13:4043/api/articles/post')
       .then(resPost => resPost.json())
       .then(jsonPost => {
         const data = jsonPost.data;
