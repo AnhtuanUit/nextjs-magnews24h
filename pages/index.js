@@ -13,7 +13,7 @@ function Index({ articles, data }) {
 }
 
 Index.getInitialProps = async ctx => {
-  const res = await fetch('https://45.76.179.13:4043/api/articles/Trangnhat?limit=14')
+  const res = await fetch('https://pacific-brook-34627.herokuapp.com/api/articles/Trangnhat?limit=14')
   const json = await res.json();
   const articles = json.data.articles;
   return { articles }
