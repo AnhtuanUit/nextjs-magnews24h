@@ -17,7 +17,7 @@ Index.getInitialProps = async ctx => {
   const { article } = query;
   if (article.includes(".html")) {
     const articleId = article.match(/\-([\da-z]*).html/)[1];
-    const resPost = await fetch(`https://pacific-brook-34627.herokuapp.com/api/articles/Trangnhat/${articleId}`);
+    const resPost = await fetch(`https://magnews24h.herokuapp.com/api/articles/Trangnhat/${articleId}`);
     const jsonPost = await resPost.json()
     const data = jsonPost.data;
     return { article: data };

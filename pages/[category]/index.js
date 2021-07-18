@@ -24,14 +24,14 @@ Index.getInitialProps = async ctx => {
   const existCategories = categories.map(category => category.type);
   if (category.includes(".html")) {
     const articleId = category.match(/\-([\da-z]*).html/)[1];
-    const resPost = await fetch(`https://pacific-brook-34627.herokuapp.com/api/articles/Trangnhat/${articleId}`);
+    const resPost = await fetch(`https://magnews24h.herokuapp.com/api/articles/Trangnhat/${articleId}`);
     const jsonPost = await resPost.json()
     const data = jsonPost.data;
     return { article: data };
   } else if (existCategories.includes(categoryPath)) {
     const categoryName = categories.find(category => category.type === categoryPath).name;
     const typeQuery = classcapitalizeFirstLetter(categoryPath.replace('/', '')).split('-').join("");
-    const resPost = await fetch(`https://pacific-brook-34627.herokuapp.com/api/articles/${typeQuery}?page=${pageNumber || 1}&limit=15`);
+    const resPost = await fetch(`https://magnews24h.herokuapp.com/api/articles/${typeQuery}?page=${pageNumber || 1}&limit=15`);
     const jsonPost = await resPost.json()
     const data = jsonPost.data;
     return { articles: data, categoryName, categoryPath, pageNumber };
