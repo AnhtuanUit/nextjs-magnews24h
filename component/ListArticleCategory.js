@@ -2,6 +2,7 @@ import Article from "./Article";
 import ArticleCategory from "./ArticleCategory";
 import convertSizeImageUrl from "../helper/convertSizeImageUrl";
 import categories from "../constants/categories.js";
+import config from "../config/config";
 import { Component } from 'react';
 import fetch from 'isomorphic-unfetch';
 
@@ -11,7 +12,7 @@ class ListArticleCategory extends Component {
   }
 
   componentDidMount() {
-    fetch('https://magnews24h.herokuapp.com/api/articles/post')
+    fetch(`${config.base}/api/articles/post`)
       .then(resPost => resPost.json())
       .then(jsonPost => {
         const data = jsonPost.data;
