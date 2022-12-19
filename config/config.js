@@ -1,3 +1,3 @@
 export default {
-    baseApiUrl: 'http://45.77.172.135:4040'
+    baseApiUrl: 'https://at10346.chickenkiller.com'
 }
