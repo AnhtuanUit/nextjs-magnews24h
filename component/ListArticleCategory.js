@@ -12,7 +12,7 @@ class ListArticleCategory extends Component {
   }
 
   componentDidMount() {
-    fetch(`${config.base}/api/articles/post`)
+    fetch(`${config.baseApiUrl}/api/articles/post`)
       .then(resPost => resPost.json())
       .then(jsonPost => {
         const data = jsonPost.data;
