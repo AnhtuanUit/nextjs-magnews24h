@@ -5,12 +5,12 @@ import convertSizeImageUrl from "../helper/convertSizeImageUrl";
 
 function Trending({ articles }) {
     const firstArticle = articles[0];
-    firstArticle.thumb_art = convertSizeImageUrl.toFull(firstArticle.thumb_art);
-    const mediumArticles = articles.slice(1, 5).map(article => {
+    if (firstArticle)  firstArticle.thumb_art = convertSizeImageUrl.toFull(firstArticle.thumb_art);
+    const mediumArticles = articles.length && articles.slice(1, 5).map(article => {
         article.thumb_art = convertSizeImageUrl.toLarge(article.thumb_art);
         return article;
     })
-    const thumbnailArticles = articles.slice(5).map(article => {
+    const thumbnailArticles = articles.length && articles.slice(5).map(article => {
         article.thumb_art = convertSizeImageUrl.toThumbnail(article.thumb_art);
         return article;
     })
@@ -24,7 +24,7 @@ function Trending({ articles }) {
                         </div>
                     </div>
                     <div className="col-md-7 first-article">
-                        <Article article={firstArticle} />
+                        {firstArticle && <Article article={firstArticle} />}
                     </div>
                 </div>
                 <div className="row">
@@ -32,7 +32,7 @@ function Trending({ articles }) {
                         <div className="tab-content">
                             <div id="tab1" className="tab-pane fade in active">
                                 <div className="row">
-                                    {mediumArticles.map(article =>
+                                    {mediumArticles.length && mediumArticles.map(article =>
                                         <div className="col-md-3 col-sm-6" key={article._id}>
                                             <Article article={article} />
                                         </div>)
