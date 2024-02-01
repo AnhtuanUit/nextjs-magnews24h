@@ -1,6 +1,14 @@
-# Magnews24h
+# Magnews24h (A Demo for System Crawler)
 
 Welcome to Magnews24h, a news portal covering a wide range of topics including current events, business, entertainment, sports, law, education, health, lifestyle, travel, science, automotive, opinions, and humor.
+
+# Live App and Video Demo
+
+[![initial Live Video Demo](https://github.com/AnhtuanUit/nextjs-magnews24h/assets/13465843/f9ac36ab-eec7-40ab-91bc-9aa79b144fee)](https://www.youtube.com/watch?v=5s3iJZxWCQI)
+
+Click on the image above or use this 🎬 [Watch the video](https://www.youtube.com/watch?v=5s3iJZxWCQI) to watch the demo video.
+
+Explore the live demo: [Magnews24h Live Demo](https://magnews24h.netlify.app/)
 
 ## Getting Started
 
